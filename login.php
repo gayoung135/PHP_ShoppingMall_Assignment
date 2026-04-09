@@ -2,35 +2,65 @@
 include 'db.php';
 session_start();
 
-// 사용자가 입력한 데이터 받기
-$userId = $_POST['user_id']; 
-$userPw = $_POST['password'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-if (isset($conn)) {
-    // DB의 아이디 컬럼명이 'user_id'라고 가정했을 때
-    $sql = "SELECT * FROM member WHERE user_id='$userId'"; 
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_array($result);
+    // 사용자가 입력한 데이터 받기
+    $userId = $_POST['user_id']; 
+    $userPw = $_POST['password'];
 
-    if(!$row) {  
-        echo "<script>alert('아이디가 일치하지 않습니다.'); history.back();</script>";
-        exit;
-    } else {
-        // password_verify(사용자 입력 비번, DB에 저장된 암호화된 비번)
-        if(!password_verify($userPw, $row['password'])) { 
-            echo "<script>alert('비밀번호가 일치하지 않습니다.'); history.back();</script>";
+    if (isset($conn)) {
+        $sql = "SELECT * FROM users WHERE user_id='$userId'"; 
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_array($result);
+
+        if(!$row) {  
+            echo "<script>alert('아이디가 일치하지 않습니다.'); history.back();</script>";
             exit;
         } else {
-            // 로그인 성공
-            $_SESSION['userName'] = $row['user_name'];
-            $_SESSION['userId'] = $row['user_id'];
-            mysqli_close($conn);
-            
-            echo "<script>alert('로그인 성공!'); location.href='index.php';</script>";
+            if(!password_verify($userPw, $row['password'])) { 
+                echo "<script>alert('비밀번호가 일치하지 않습니다.'); history.back();</script>";
+                exit;
+            } else {
+                // 로그인 성공
+                $_SESSION['userName'] = $row['user_name'];
+                $_SESSION['userId'] = $row['user_id'];
+                mysqli_close($conn);
+                
+                echo "<script>alert('로그인 성공!'); location.href='index.php';</script>";
+            }
         }
     }
-} else {
-    echo "입력된 아이디: " . $userId . "<br>";
-    echo "현재 DB 연결이 없어 로그인은 진행되지 않습니다.";
-}
+} 
 ?>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 페이지</title>
+</head>
+<body>
+    <h2>로그인</h2>
+    
+    <form action="login.php" method="POST">
+        <div>
+            <label for="user_id">아이디:</label>
+            <input type="text" id="user_id" name="user_id" required>
+        </div>
+        
+        <br>
+        
+        <div>
+            <label for="password">비밀번호:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        
+        <br>
+        
+        <div>
+            <button type="submit">로그인</button>
+            <button type="button" onclick="location.href='register.php'">회원가입</button>
+        </div>
+    </form>
+</body>
+</html>
