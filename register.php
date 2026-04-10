@@ -1,5 +1,5 @@
-// 회원가입
 <form action="register_process.php" method="POST">
+    <!-- 회원가입 -->
     아이디: <input type="text" name="user_id" id="user_id" required>
     <button type="button" onclick="checkDuplicate()">중복확인</button>
     <p id="msg"></p> <!-- 결과 메시지 출력 -->
