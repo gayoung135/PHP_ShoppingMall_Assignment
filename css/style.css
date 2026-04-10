@@ -6,6 +6,7 @@
 }
 
 body {
+    margin-top: 65px; /* nav바 상단고정되며 부자연스러워진 부분 채우기 */
     font-family: 'Noto Sans KR', sans-serif; /* 깔끔한 한국어 폰트 권장 */
     background-color: #fff;
     color: #333;
@@ -31,13 +32,14 @@ ul {
 
 /* --- header.php (네비게이션) 스타일 --- */
 .navbar {
+    width: 100%;
     display: flex;
     justify-content: space-between; /* 로고 - 메뉴 - 로그인 양끝 정렬 */
     align-items: center; /* 세로 중앙 정렬 */
     padding: 15px 10%; /* 여백 */
     background: #fff;
     border-bottom: 1px solid var(--border-color);
-    position: sticky; /* 스크롤 시 상단 고정 */
+    position: fixed; /* 스크롤 시 상단 고정 */
     top: 0;
     z-index: 1000;
 }
