@@ -1,0 +1,232 @@
+/* --- 기본 스타일 리셋 & 전체 테마 --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* 크기 계산 오류 방지 */
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif; /* 깔끔한 한국어 폰트 권장 */
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none; /* 밑줄 제거 */
+    color: inherit; /* 보라색 링크 대신 부모 색상 따름 */
+}
+
+ul {
+    list-style: none; /* 불릿(점) 제거 */
+}
+
+/* 색상 변수 설정 (밀키트 느낌) */
+:root {
+    --primary-color: #2D6A4F; /* 메인 초록 */
+    --accent-color: #FF8A00; /* 포인트 오렌지 */
+    --bg-light: #F9F9F9;
+    --border-color: #EEE;
+}
+
+/* --- header.php (네비게이션) 스타일 --- */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* 로고 - 메뉴 - 로그인 양끝 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    padding: 15px 10%; /* 여백 */
+    background: #fff;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky; /* 스크롤 시 상단 고정 */
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 5px; /* 이모지와 텍스트 사이 간격 */
+}
+
+.nav-links {
+    display: flex; /* 세로 메뉴를 가로로 */
+    gap: 30px; /* 메뉴 간격 */
+}
+
+.nav-links a {
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color); /* 마우스 올렸을 때 초록색 */
+}
+
+.user-menu {
+    display: flex;
+    gap: 15px;
+    font-size: 14px;
+}
+
+.user-menu a.reg-btn { /* 회원가입 버튼 강조 */
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 20px;
+}
+
+/* --- index.php (메인 내용) 스타일 --- */
+
+hr {
+    margin:50px;
+}
+
+/* 히어로 배너 */
+.hero-banner {
+    height: 400px;
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../images/heroBanner.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.banner-text h2 {
+    color: #fff;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.banner-text p {
+    font-size: 18px;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.banner-text .btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* --- 상품 리스트 레이아웃 수리 --- */
+.container {
+    padding: 60px 10%;
+}
+
+.container h3 {
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+/* 추가한 상품들이 한 줄에 나오게 하는 핵심 부모 설정 */
+.product-list {
+    display: grid; /* Flex 대신 Grid가 상품 진열에 더 강력 */
+    grid-template-columns: repeat(4, 1fr); /* 한 줄에 4개씩 균등 분할 */
+    gap: 25px; /* 상품 카드 간의 간격 (붙어있는 문제 해결) */
+}
+
+/* 개별 상품 카드 디자인 */
+.item {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden; /* 이미지가 튀어나오지 않게 */
+    transition: box-shadow 0.3s, transform 0.3s;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.item:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08); /* 마우스 올리면 입체감 */
+    transform: translateY(-5px);
+}
+
+.img-box {
+    width: 100%;
+    height: 180px; /* 이미지 영역 높이 고정 */
+    background-color: #F4F4F4; /* 이미지 없을 때 대비한 배경 */
+    overflow: hidden;
+}
+
+.img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지가 비율 깨지지 않고 영역을 꽉 채우게 */
+}
+
+.item h4 {
+    font-size: 16px;
+    margin: 15px 10px 5px;
+    font-weight: 500;
+}
+
+.item p {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 17px;
+}
+
+del {
+    color: #777;
+}
+
+/* 로고 클릭 시 살짝 커지는 효과 */
+.logo a:hover {
+    transform: scale(1.05);
+    transition: 0.2s;
+}
+
+/* 메뉴에 마우스 올리면 초록색 밑줄 */
+.nav-links a {
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #2D6A4F;
+    transition: 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.img-box {
+    background-color: #e2e8f0; /* 연한 회색 배경 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+/* --- footer.php 스타일 --- */
+
+.footer {
+    height: 150px;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-text {
+    display: block;
+    text-align: center
+}
