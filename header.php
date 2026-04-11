@@ -1,3 +1,9 @@
+<?php
+// 헤더부분 상단에 세션이 없을때만 실행하는 코드로 수정 (혜인)
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <header>
     <nav class="navbar">
         <div class="logo">
@@ -10,25 +16,19 @@
         </ul>
         <div class="user-menu">
     <div class="user-menu">
-  <?php
-//기존 코드랑 제가 쓴 코드가 안맞아서 ui에 맞게끔 수정했습니다(혜인)    
-// 세션 처리 시작
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-    }
-
-    // login.php에서 만든 세션 변수(userId)가 있는지 확인
-    if(isset($_SESSION['userId'])) {
-        // 로그인 상태일 때 출력되는 내용
-        echo '<span class="welcome-text"><strong>' . $_SESSION['userName'] . '</strong>님 환영합니다!</span>';
-        echo '<a href="logout.php">로그아웃</a>';
-        echo '<a href="mypage.php">마이페이지</a>';
-    } else {
-        // 로그인하지 않았을 때 출력되는 내용
-        echo '<a href="login.php">로그인</a>';
-        echo '<a href="register.php">회원가입</a>';
-    }
-    ?>
+ <?php
+  // login_process.php 추가로 로그인 로직 수정함 (혜인)
+  // 세션에 저장된 user_id가 있는지 확인
+  if (isset($_SESSION['user_id'])) {
+      // 로그인 된 상태
+      echo $_SESSION['user_name'] . "님 환영합니다! ";
+      echo "<a href='logout.php'>로그아웃</a>";
+  } else {
+      // 로그인 안 된 상태
+      echo "<a href='login.php'>로그인</a> ";
+      echo "<a href='register.php'>회원가입</a>";
+  }
+?>
 </div>
         </div>
     </nav>
