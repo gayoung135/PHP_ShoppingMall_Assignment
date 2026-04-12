@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- 생성 시간: 26-04-09 14:17
+-- 생성 시간: 26-04-12 16:26
 -- 서버 버전: 10.4.32-MariaDB
 -- PHP 버전: 8.0.30
 
@@ -40,7 +40,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_id`, `password`, `user_name`, `created_at`) VALUES
-(1, 'abc1234', '$2y$10$VQn08owOrYU9i5S5h2ZtMedBgXE3/aLWmhDdNdFpvSNaNg5xJw4bi', '말랑말랑', '2026-04-09 11:39:48');
+(1, 'test', '$2y$10$pNotAtNkprAWPVOpXrmnNuqOl7mT7ijDECycKHkvTlfquR.fagSQ.', '테스트', '2026-04-10 02:51:40'),
+(2, 'test1234', '$2y$10$IyYDx5kzzxI1GRMInk6kRubAYl5/wBe6izXZ48a9OE3ZSKWW9eRIq', '테스트1234', '2026-04-12 13:28:23');
 
 --
 -- 덤프된 테이블의 인덱스
