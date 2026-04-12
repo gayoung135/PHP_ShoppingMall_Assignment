@@ -2,6 +2,7 @@
 // 아이디 중복 확인
 include 'db.php';
 
+<<<<<<< HEAD
 // 자바스크립트 GET 방식 보냄 -> 받기 위해 $_GET 사용
 if (isset($_GET['user_id'])) {
     $userId = $_GET['user_id'];
@@ -17,12 +18,21 @@ if (empty($userId)) {
 }
 
 // DB 조회 (따옴표 주의)
+=======
+$userId = $_POST['user_id'];
+>>>>>>> origin/feature/yhi
 $sql = "SELECT * FROM users WHERE user_id = '$userId'";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
+<<<<<<< HEAD
     echo "exists"; // DB에 있음 (중복됨)
 } else {
     echo "available"; // DB에 없음 (사용 가능)
+=======
+    echo "exists"; // 중복된 아이디
+} else {
+    echo "available"; // 사용 가능
+>>>>>>> origin/feature/yhi
 }
 ?>
