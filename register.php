@@ -17,7 +17,7 @@
         width: 400px;
     }
     h2 { color: #2c3e50; text-align: center; margin-bottom: 30px; }
-    /* 기본 그룹 간격을 좁게 유지합니다 */
+    /* 기본 그룹 간격을 좁게 유지 */
     .input-group { margin-bottom: 5px; }
     label { display: block; margin-bottom: 5px; color: #666; font-size: 14px; }
     
@@ -44,7 +44,7 @@
     }
     
     /* 메시지 스타일 (아이디 및 비밀번호 공통) */
-    /* 초기에는 min-height를 0으로 설정하여 간격을 없앱니다 */
+    /* 초기에는 min-height를 0으로 설정하여 간격을 없앰 */
     #msg, #pw_msg, #pw_re_msg, #name_msg { 
         font-size: 13px; 
         margin: 0; 
@@ -170,7 +170,7 @@ function checkPassword() {
     } else {
         updateMsg(pwMsg, "안전한 비밀번호입니다.", "#27ae60"); // 초록색
     }
-    // 비밀번호가 수정될 때 확인 칸과의 일치 여부도 다시 체크합니다
+    // 비밀번호가 수정될 때 확인 칸과의 일치 여부도 다시 체크함
     if(typeof checkPasswordMatch === 'function') checkPasswordMatch();
 }
 
